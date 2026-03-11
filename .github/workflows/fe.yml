@@ -30,7 +30,7 @@ jobs:
         run: chmod +x node_modules/.bin/react-scripts
 
       - name: Build React app
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -40,4 +40,4 @@ jobs:
           password: ${{ secrets.FE_FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./FrontendWeb/build/
-          server-dir: /nhom7-web-frontend.gt.tc/
+          server-dir: /htdocs/
