@@ -22,9 +22,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Fix react-scripts permission
+        run: chmod +x node_modules/.bin/react-scripts
 
       - name: Build React app
         run: npm run build
@@ -35,6 +39,6 @@ jobs:
           server: ${{ secrets.FE_FTP_HOST }}
           username: ${{ secrets.FE_FTP_USER }}
           password: ${{ secrets.FE_FTP_PASSWORD }}
-          local-dir: ./FrontendWeb/build/
-          server-dir: /nhom7-web-frontend.gt.tc/
           protocol: ftp
+          local-dir: build/
+          server-dir: /nhom7-web-frontend.gt.tc/
