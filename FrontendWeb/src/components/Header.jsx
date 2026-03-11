@@ -8,7 +8,7 @@ const Header = () => {
           <div className="bg-primary p-1.5 rounded-lg text-white">
             <span className="material-symbols-outlined block">devices</span>
           </div>
-          <a href="#" className="text-xl font-bold tracking-tight">LAPSTORE</a>
+          <a href="/" className="text-xl font-bold tracking-tight">LAPSTORE</a>
         </div>
         <div className="flex-1 max-w-xl relative hidden md:block">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></span>

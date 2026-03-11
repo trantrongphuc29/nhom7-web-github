@@ -16,10 +16,10 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-4">Hỗ trợ khách hàng</h3>
             <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-              <li><a className="hover:text-primary" href="#">Hướng dẫn mua hàng</a></li>
-              <li><a className="hover:text-primary" href="#">Chính sách bảo hành</a></li>
-              <li><a className="hover:text-primary" href="#">Chính sách vận chuyển</a></li>
-              <li><a className="hover:text-primary" href="#">Câu hỏi thường gặp</a></li>
+              <li><a className="hover:text-primary" href="/huong-dan">Hướng dẫn mua hàng</a></li>
+              <li><a className="hover:text-primary" href="/bao-hanh">Chính sách bảo hành</a></li>
+              <li><a className="hover:text-primary" href="/van-chuyen">Chính sách vận chuyển</a></li>
+              <li><a className="hover:text-primary" href="/faq">Câu hỏi thường gặp</a></li>
             </ul>
           </div>
           <div>
