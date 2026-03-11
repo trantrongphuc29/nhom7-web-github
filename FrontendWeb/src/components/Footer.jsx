@@ -29,7 +29,7 @@ const Footer = () => {
                 <span>Hotline: 1900 633 570</span>
               </li>
               <li className="flex items-start gap-2">
-                <span>Email: labstore@gmail.com</span>
+                <span>Email: lapstore@gmail.com</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>Địa chỉ: 180 Cao Lỗ, Phường 4, Quận 8, TPHCM</span>
