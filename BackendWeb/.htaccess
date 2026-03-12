@@ -1,15 +1,14 @@
-# Enable CORS - unset first to avoid duplicates
-Header unset Access-Control-Allow-Origin
-Header unset Access-Control-Allow-Methods
-Header unset Access-Control-Allow-Headers
-
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-Header set Access-Control-Allow-Headers "Content-Type, Authorization"
-
 # Enable URL rewriting
 RewriteEngine On
 
-# Handle preflight OPTIONS requests - return 200 immediately
+# Handle preflight OPTIONS requests - return 200 immediately with CORS headers
 RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule .* - [R=200,L]
+RewriteRule .* - [R=200,L,E=HTTP_ORIGIN:%{HTTP:Origin}]
+
+# Set CORS headers via environment variable workaround for some hosts
+SetEnvIf Origin "^(.*)" ORIGIN=$0
+
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+Header always set Access-Control-Max-Age "86400"
