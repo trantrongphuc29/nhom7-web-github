@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "labstore_db";
-    private $username = "root";
-    private $password = "";
+    private $host = "sql105.infinityfree.com";
+    private $db_name = "if0_41296920_labstore_db";
+    private $username = "if0_41296920";
+    private $password = "22122004Nhi";
     public $conn;
 
     public function getConnection() {
