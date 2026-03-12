@@ -19,20 +19,39 @@ if (!$db) {
 $user = new User($db);
 
 try {
-    $stmt = $user->read();
-    $users_arr = array();
-    $users_arr["records"] = array();
+    // Check if ID is provided (for single user)
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        $user->id = $_GET['id'];
+        $user->readOne();
+        
+        if ($user->name != null) {
+            $user_arr = array(
+                "id" => $user->id,
+                "name" => $user->name
+            );
+            http_response_code(200);
+            echo json_encode($user_arr);
+        } else {
+            http_response_code(404);
+            echo json_encode(array("message" => "User not found."));
+        }
+    } else {
+        // Get all users
+        $stmt = $user->read();
+        $users_arr = array();
+        $users_arr["records"] = array();
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $user_item = array(
-            "id" => $row['id'],
-            "name" => $row['name']
-        );
-        array_push($users_arr["records"], $user_item);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user_item = array(
+                "id" => $row['id'],
+                "name" => $row['name']
+            );
+            array_push($users_arr["records"], $user_item);
+        }
+
+        http_response_code(200);
+        echo json_encode($users_arr);
     }
-
-    http_response_code(200);
-    echo json_encode($users_arr);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(array("message" => "Error: " . $e->getMessage()));
