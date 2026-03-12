@@ -4,7 +4,6 @@ import Banner from '../components/Banner';
 import Sidebar from '../components/Sidebar';
 import ProductGrid from '../components/ProductGrid';
 import Footer from '../components/Footer';
-import ConnectivityTest from '../components/ConnectivityTest';
 
 function HomePage() {
   const [filters, setFilters] = useState({
@@ -21,7 +20,6 @@ function HomePage() {
     <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
       <Header />
       <main className="max-w-7xl mx-auto px-4 py-6">
-        <ConnectivityTest />
         <Banner />
         <div className="flex flex-col lg:flex-row gap-8">
           <Sidebar filters={filters} setFilters={setFilters} />
