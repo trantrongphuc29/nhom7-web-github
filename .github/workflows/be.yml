@@ -1,0 +1,25 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "BackendWeb/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.BE_FTP_HOST }}
+          username: ${{ secrets.BE_FTP_USER }}
+          password: ${{ secrets.BE_FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: ./BackendWeb/
+          server-dir: /nhom7-web-backend.gt.tc/
