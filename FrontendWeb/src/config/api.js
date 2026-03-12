@@ -1,6 +1,6 @@
 // Cấu hình base URL cho API và Backend
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost/nhom7laptop/BackendWeb/api';
-const BACKEND_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost/nhom7laptop/BackendWeb';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://nhom7-web-backend.infinityfreeapp.com/api';
+const BACKEND_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'https://nhom7-web-backend.infinityfreeapp.com';
 
 export const API_ENDPOINTS = {
   PRODUCTS: `${API_BASE_URL}/products/read.php`,

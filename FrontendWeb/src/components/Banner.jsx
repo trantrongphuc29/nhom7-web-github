@@ -12,28 +12,8 @@ const Banner = () => {
 
   const fetchBanners = async () => {
     try {
-      console.log('Fetching banners from:', API_ENDPOINTS.BANNERS);
-      
-      // Try with different fetch configurations
-      const fetchOptions = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        mode: 'cors',
-        credentials: 'omit'
-      };
-      
-      const response = await fetch(API_ENDPOINTS.BANNERS, fetchOptions);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
-      }
-      
+      const response = await fetch(API_ENDPOINTS.BANNERS);
       const data = await response.json();
-      console.log('Banner data received:', data);
-      
       if (data.records && data.records.length > 0) {
         const bannersData = data.records.map(banner => ({
           ...banner,
@@ -42,46 +22,9 @@ const Banner = () => {
             : `${BACKEND_BASE_URL}/${banner.image_url}`
         }));
         setBanners(bannersData);
-      } else {
-        console.warn('No banner records found in response');
       }
     } catch (error) {
       console.error('Error fetching banners:', error);
-      console.error('Error details:', {
-        message: error.message,
-        name: error.name,
-        stack: error.stack
-      });
-      
-      // Try alternative approach with XMLHttpRequest as fallback
-      try {
-        console.log('Trying XMLHttpRequest fallback...');
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', API_ENDPOINTS.BANNERS, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-              const data = JSON.parse(xhr.responseText);
-              console.log('XHR Banner data received:', data);
-              if (data.records && data.records.length > 0) {
-                const bannersData = data.records.map(banner => ({
-                  ...banner,
-                  image_url: banner.image_url.startsWith('http') 
-                    ? banner.image_url 
-                    : `${BACKEND_BASE_URL}/${banner.image_url}`
-                }));
-                setBanners(bannersData);
-              }
-            } else {
-              console.error('XHR failed with status:', xhr.status);
-            }
-          }
-        };
-        xhr.send();
-      } catch (xhrError) {
-        console.error('XHR fallback also failed:', xhrError);
-      }
     }
   };
 
