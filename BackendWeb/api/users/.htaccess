@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /BackendWeb/api/users/
+RewriteBase /api/users/
 
 # Route /users/1 to show.php
 RewriteCond %{REQUEST_FILENAME} !-f
