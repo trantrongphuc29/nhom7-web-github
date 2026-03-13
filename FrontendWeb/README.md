@@ -1,6 +1,6 @@
-# ThinkPro Laptop Store - React App
+#Laptop Store - React App
 
-Dự án website bán laptop ReactJS.
+Dự án website bán Laptop ReactJS.
 
 ## Cấu trúc dự án
 
