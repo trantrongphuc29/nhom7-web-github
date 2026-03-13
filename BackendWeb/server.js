@@ -17,6 +17,9 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve static files
+app.use('/images', express.static('images'));
+
 // Routes
 app.use('/api/banners', require('./routes/banners'));
 app.use('/api/products', require('./routes/products'));
