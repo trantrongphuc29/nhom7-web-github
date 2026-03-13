@@ -8,11 +8,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(morgan('combined'));
 app.use(cors({
-  origin: ['https://nhom7-lapstore.onrender.com', 'http://localhost:3000'],
-  credentials: true
+  origin: ['https://nhom7-lapstore.onrender.com', 'http://localhost:3000', 'http://localhost:3001'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +27,7 @@ app.use('/images', express.static('images'));
 // Routes
 app.use('/api/banners', require('./routes/banners'));
 app.use('/api/products', require('./routes/products'));
+app.use('/users', require('./routes/users'));
 app.use('/api/users', require('./routes/users'));
 
 // Health check

@@ -6,8 +6,8 @@ export const API_ENDPOINTS = {
   PRODUCTS: `${API_BASE_URL}/products`,
   PRODUCT_DETAIL: (id) => `${API_BASE_URL}/products/${id}`,
   BANNERS: `${API_BASE_URL}/banners`,
-  USERS: `${API_BASE_URL}/users`,
-  USER_DETAIL: (id) => `${API_BASE_URL}/users/${id}`,
+  USERS: `${BACKEND_BASE_URL}/users`,
+  USER_DETAIL: (id) => `${BACKEND_BASE_URL}/users/${id}`,
 };
 
 export { BACKEND_BASE_URL };
