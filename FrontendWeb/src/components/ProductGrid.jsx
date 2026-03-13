@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import { API_ENDPOINTS } from "../config/api";
+import { API_ENDPOINTS, BACKEND_BASE_URL } from "../config/api";
 
 const ProductGrid = ({ filters, setFilters }) => {
   const [products, setProducts] = useState([]);
@@ -111,6 +111,9 @@ const ProductGrid = ({ filters, setFilters }) => {
               key={product.id}
               product={{
                 ...product,
+                image: product.image && product.image.startsWith('http') 
+                  ? product.image 
+                  : `${BACKEND_BASE_URL}/${product.image || ''}`,
                 price: new Intl.NumberFormat("vi-VN", {
                   style: "currency",
                   currency: "VND",
