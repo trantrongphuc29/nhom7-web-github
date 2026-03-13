@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = "sql105.infinityfree.com";
-    private $db_name = "if0_41296920_labstore_db";
-    private $username = "if0_41296920";
-    private $password = "22122004Nhi";
+    private $host = "yamanote.proxy.rlwy.net";
+    private $db_name = "33738";
+    private $username = "33738";
+    private $password = "mNTplYZnvlvIhGvbmScopJyaqkcmfjWA";
     public $conn;
 
     public function getConnection() {
