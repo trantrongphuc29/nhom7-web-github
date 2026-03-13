@@ -11,6 +11,9 @@ class User {
     }
 
     public function read() {
+        if (!$this->conn) {
+            throw new Exception("Database connection is null");
+        }
         $query = "SELECT * FROM " . $this->table_name . " ORDER BY id ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
